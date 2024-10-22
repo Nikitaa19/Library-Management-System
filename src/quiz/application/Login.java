@@ -2,8 +2,9 @@ package quiz.application;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class Login extends JFrame {
+public class Login extends JFrame implements ActionListener{
     
     Login() {
         getContentPane().setBackground(Color.WHITE);
@@ -37,15 +38,19 @@ public class Login extends JFrame {
         rules.setForeground(Color.WHITE);
         add(rules);
         
-        JButton rules = new JButton("Rules");
-        rules.setBounds(735, 270, 120, 25);
-        rules.setBackground(new Color(30, 144, 254));
-        rules.setForeground(Color.WHITE);
-        add(rules);
+        JButton back = new JButton("Back");
+        back.setBounds(915, 270, 120, 25);
+        back.setBackground(new Color(30, 144, 254));
+        back.setForeground(Color.WHITE);
+        add(back);
         
         setSize(1200, 500);
         setLocation(200, 150);
         setVisible(true);
+        
+    }
+    
+    public void actionPerformed(ActionEvent ae) {
         
     }
     
