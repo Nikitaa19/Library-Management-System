@@ -26,6 +26,23 @@ public class Login extends JFrame {
         name.setForeground(new Color(30, 144, 254));
         add(name);
         
+        JTextField tfname = new JTextField();
+        tfname.setBounds(735, 200, 300, 25);
+        tfname.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        add(tfname);
+        
+        JButton rules = new JButton("Rules");
+        rules.setBounds(735, 270, 120, 25);
+        rules.setBackground(new Color(30, 144, 254));
+        rules.setForeground(Color.WHITE);
+        add(rules);
+        
+        JButton rules = new JButton("Rules");
+        rules.setBounds(735, 270, 120, 25);
+        rules.setBackground(new Color(30, 144, 254));
+        rules.setForeground(Color.WHITE);
+        add(rules);
+        
         setSize(1200, 500);
         setLocation(200, 150);
         setVisible(true);
