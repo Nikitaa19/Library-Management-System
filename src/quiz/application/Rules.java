@@ -5,7 +5,11 @@ import java.awt.*;
 
 public class Rules extends JFrame{
     
-    Rules() {
+    String name;
+    
+    Rules(String name) {
+        
+        this.name = name;
         
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);

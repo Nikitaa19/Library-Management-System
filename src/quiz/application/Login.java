@@ -57,8 +57,9 @@ public class Login extends JFrame implements ActionListener{
     
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == rules) {
+            String name = tfname.getText();
             setVisible(false);
-            new Rules();
+            new Rules(name);
         } else if (ae.getSource() == back) {
             setVisible(false);
             
