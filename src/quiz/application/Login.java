@@ -1,6 +1,8 @@
 package quiz.application;
 
-public class Login {
+import javax.swing.*;
+
+public class Login extends JFrame {
     
     Login() {
         
