@@ -15,6 +15,16 @@ public class Quiz extends JFrame {
         image.setBounds(0, 0, 1440, 392);
         add(image);
         
+        JLabel qno = new JLabel("1");
+        qno.setBounds(100, 450, 50, 30);
+        qno.setFont(new Font("Tahoma", Font.PLAIN, 24));
+        add(qno);
+        
+        JLabel qno = new JLabel();
+        qno.setBounds(100, 450, 50, 30);
+        qno.setFont(new Font("Tahoma", Font.PLAIN, 24));
+        add(qno);
+        
         setVisible(true);
         
     }
