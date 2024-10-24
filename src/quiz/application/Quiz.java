@@ -9,6 +9,7 @@ public class Quiz extends JFrame {
     String answers[][] = new String[10][2];
     JLabel qno, question;
     JRadioButton opt1, opt2, opt3, opt4;
+    public static  int timer = 15;
     
     Quiz() {
         setBounds(50, 0, 1440, 850);
@@ -157,6 +158,13 @@ public class Quiz extends JFrame {
         
         setVisible(true);
         
+    }
+    
+    public void pain(Graphics g) {
+        super.paint(g);
+        
+        String time = "Time left - " + timer + " seconds";
+        g.setColor(Color.RED);
     }
     
     public void start(int count) {
