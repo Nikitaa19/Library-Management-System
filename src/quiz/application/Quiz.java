@@ -160,11 +160,16 @@ public class Quiz extends JFrame {
         
     }
     
-    public void pain(Graphics g) {
+    public void paint(Graphics g) {
         super.paint(g);
         
         String time = "Time left - " + timer + " seconds";
         g.setColor(Color.RED);
+        g.setFont(new Font("Tahoma", Font.BOLD, 25));
+        
+        if (timer > 0) {
+            g.drawString(time, 1100, 500);
+        }
     }
     
     public void start(int count) {
