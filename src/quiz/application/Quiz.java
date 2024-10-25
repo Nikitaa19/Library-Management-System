@@ -7,9 +7,14 @@ public class Quiz extends JFrame {
     
     String questions[][] = new String[10][5];
     String answers[][] = new String[10][2];
+    String useranswers[][] = new String[10][1];
     JLabel qno, question;
     JRadioButton opt1, opt2, opt3, opt4;
+    ButtonGroup groupoptions;
+    
     public static  int timer = 15;
+    public static int ans_given = 0;
+    public static int count = 0;
     
     Quiz() {
         setBounds(50, 0, 1440, 850);
@@ -126,7 +131,7 @@ public class Quiz extends JFrame {
         opt4.setFont(new Font("Dialog", Font.PLAIN, 20));
         add(opt4);
         
-        ButtonGroup groupoptions = new ButtonGroup();
+        groupoptions = new ButtonGroup();
         groupoptions.add(opt1);
         groupoptions.add(opt2);
         groupoptions.add(opt3);
@@ -154,7 +159,7 @@ public class Quiz extends JFrame {
         submit.setEnabled(false);
         add(submit);
         
-        start(0);
+        start(count);
         
         setVisible(true);
         
@@ -169,6 +174,32 @@ public class Quiz extends JFrame {
         
         if (timer > 0) {
             g.drawString(time, 1100, 500);
+        } else {
+            g.drawString("Times up!!", 1100, 500);
+        }
+        
+        timer--;
+        
+        try {
+            Thread.sleep(1000);
+            repaint();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        if (ans_given == 1) {
+            ans_given = 0;
+            timer = 15;
+        } else if (timer < 0) {
+            timer = 15;
+            
+            if (groupoptions.getSelection() == null) {
+                useranswers[count][0] = "";
+            } else {
+                useranswers[count][0] = groupoptions.getSelection().getActionCommand();
+            }
+            count++;
+            start(count);
         }
     }
     
@@ -176,9 +207,18 @@ public class Quiz extends JFrame {
         qno.setText("" + (count + 1) + ". ");
         question.setText(questions[count][0]);
         opt1.setText(questions[count][1]);
+        opt1.setActionCommand(questions[count][1]);
+        
         opt2.setText(questions[count][2]);
+        opt2.setActionCommand(questions[count][2]);
+        
         opt3.setText(questions[count][3]);
+        opt3.setActionCommand(questions[count][3]);
+        
         opt4.setText(questions[count][4]);
+        opt4.setActionCommand(questions[count][4]);
+        
+        groupoptions.clearSelection();
     
     }
     
