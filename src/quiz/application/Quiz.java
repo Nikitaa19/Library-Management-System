@@ -2,8 +2,9 @@ package quiz.application;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class Quiz extends JFrame {
+public class Quiz extends JFrame implements ActionListener{
     
     String questions[][] = new String[10][5];
     String answers[][] = new String[10][2];
@@ -11,6 +12,7 @@ public class Quiz extends JFrame {
     JLabel qno, question;
     JRadioButton opt1, opt2, opt3, opt4;
     ButtonGroup groupoptions;
+    JButton next, submit, lifeline;
     
     public static  int timer = 15;
     public static int ans_given = 0;
@@ -137,25 +139,28 @@ public class Quiz extends JFrame {
         groupoptions.add(opt3);
         groupoptions.add(opt4);
         
-        JButton next = new JButton("Next");
+        next = new JButton("Next");
         next.setBounds(1100, 550, 200, 40);
         next.setFont(new Font("Tahoma", Font.PLAIN, 22));
         next.setBackground(new Color(30, 144, 255));
         next.setForeground(Color.WHITE);
+        next.addActionListener(this);
         add(next);
         
-        JButton lifeline = new JButton("50-50 Lifeline");
+        lifeline = new JButton("50-50 Lifeline");
         lifeline.setBounds(1100, 630, 200, 40);
         lifeline.setFont(new Font("Tahoma", Font.PLAIN, 22));
         lifeline.setBackground(new Color(30, 144, 255));
         lifeline.setForeground(Color.WHITE);
+        lifeline.addActionListener(this);
         add(lifeline);
         
-        JButton submit = new JButton("Submit");
+        submit = new JButton("Submit");
         submit.setBounds(1100, 710, 200, 40);
         submit.setFont(new Font("Tahoma", Font.PLAIN, 22));
         submit.setBackground(new Color(30, 144, 255));
         submit.setForeground(Color.WHITE);
+        submit.addActionListener(this);
         submit.setEnabled(false);
         add(submit);
         
@@ -163,6 +168,32 @@ public class Quiz extends JFrame {
         
         setVisible(true);
         
+    }
+    
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == next) {
+            repaint();
+            
+            ans_given = 1;
+            
+            if (groupoptions.getSelection() == null) {
+                useranswers[count][0] = "";
+            } else {
+                useranswers[count][0] = groupoptions.getSelection().getActionCommand();
+            }
+            
+            if (count == 8) {
+                next.setEnabled(false);
+                submit.setEnabled(true);
+            }
+            
+            count++;
+            start(count);
+        } else if (ae.getSource() == lifeline) {
+            
+        } else {
+            
+        }
     }
     
     public void paint(Graphics g) {
