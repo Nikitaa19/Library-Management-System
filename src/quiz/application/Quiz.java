@@ -203,8 +203,22 @@ public class Quiz extends JFrame implements ActionListener{
                 opt4.setEnabled(false);
             }
             lifeline.setEnabled(false);
-        } else {
+        } else if (ae.getSource() == submit) {
+            ans_given = 1;
+            if (groupoptions.getSelection() == null) {
+                useranswers[count][0] = "";
+            } else {
+                useranswers[count][0] = groupoptions.getSelection().getActionCommand();
+            }
             
+            for (int i = 0; i < useranswers.length; i++) {
+                if (useranswers[i][0].equals(answers[i][1])) {
+                    score += 10;
+                } else {
+                    score += 0;
+                }
+            }
+            setVisible(false);
         }
     }
     
